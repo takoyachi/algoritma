@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Kuis Algoritma - SMK Kelas X</title>
+  <title>ALGORITMA</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -145,59 +145,80 @@
     </div>
 
     <div class="question" data-question="10">
-      <p>10. Urutan algoritma yang benar adalah...</p>
-      <label><input type="radio" name="q10" value="a"> A. Output → Proses → Input</label>
-      <label><input type="radio" name="q10" value="b"> B. Input → Output → Proses</label>
-      <label><input type="radio" name="q10" value="c"> C. Input → Proses → Output</label>
-      <label><input type="radio" name="q10" value="d"> D. Proses → Output → Input</label>
+      <p>10. Berikut ini adalah ciri-ciri dari algoritma...</p>
+      <label><input type="radio" name="q10" value="a"> A. Terstruktur</label>
+      <label><input type="radio" name="q10" value="b"> B. Acak</label>
+      <label><input type="radio" name="q10" value="c"> C. Logis</label>
+      <label><input type="radio" name="q10" value="d"> D. Sistematis</label>
     </div>
 
     <div id="result"></div>
   </div>
 
-  <script>
-    const answers = {
-      q1: 'b', q2: 'a', q3: 'b', q4: 'c', q5: 'a',
-      q6: 'b', q7: 'b', q8: 'd', q9: 'b', q10: 'c'
-    };
-    const userAnswers = {};
-    const wrong = [];
-    const questions = document.querySelectorAll('.question');
+ <script>
+  const answers = {
+    q1: 'b', q2: 'a', q3: 'b', q4: 'c', q5: 'a',
+    q6: 'b', q7: 'b', q8: 'd', q9: 'b', q10: 'b'
+  };
 
-    questions.forEach((q, index) => {
-      const inputs = q.querySelectorAll('input[type=radio]');
-      inputs.forEach(input => {
-        input.addEventListener('change', () => {
-          const name = input.name;
-          userAnswers[name] = input.value;
-          q.classList.remove('active');
-          if (index + 1 < questions.length) {
-            questions[index + 1].classList.add('active');
-          } else {
-            showResult();
-          }
-        });
+  const container = document.querySelector('.container');
+  const questions = Array.from(document.querySelectorAll('.question'));
+  const userAnswers = {};
+  const wrong = [];
+
+  // Fungsi untuk mengacak array (Fisher-Yates Shuffle)
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  // Acak dan tampilkan ulang urutan soalnya
+  const shuffled = shuffle(questions);
+  shuffled.forEach((q, i) => {
+    q.classList.remove('active');
+    container.appendChild(q);
+  });
+  shuffled[0].classList.add('active'); // hanya soal pertama aktif
+
+  // Logika navigasi soal dan penilaian
+  shuffled.forEach((q, index) => {
+    const inputs = q.querySelectorAll('input[type=radio]');
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        const name = input.name;
+        userAnswers[name] = input.value;
+        q.classList.remove('active');
+        if (index + 1 < shuffled.length) {
+          shuffled[index + 1].classList.add('active');
+        } else {
+          showResult();
+        }
       });
     });
+  });
 
-    function showResult() {
-      let score = 0;
-      for (let i = 1; i <= 10; i++) {
-        const key = 'q' + i;
-        if (userAnswers[key] === answers[key]) {
-          score++;
-        } else {
-          wrong.push(i);
-        }
-      }
-      const resultDiv = document.getElementById('result');
-      resultDiv.innerHTML = `<p>Nilai Anda: ${score * 10} / 100</p>`;
-      if (wrong.length) {
-        resultDiv.innerHTML += `<p class="wrong-list">Soal yang salah: ${wrong.join(', ')}</p>`;
+  function showResult() {
+    let score = 0;
+    for (let i = 1; i <= 10; i++) {
+      const key = 'q' + i;
+      if (userAnswers[key] === answers[key]) {
+        score++;
       } else {
-        resultDiv.innerHTML += `<p>Semua jawaban benar! Hebat!</p>`;
+        wrong.push(i);
       }
     }
-  </script>
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `<p>Nilai Anda: ${score * 10} / 100</p>`;
+    if (wrong.length) {
+      resultDiv.innerHTML += `<p class="wrong-list">Soal yang salah: ${wrong.join(', ')}</p>`;
+    } else {
+      resultDiv.innerHTML += `<p>Semua jawaban benar! Hebat!</p>`;
+    }
+  }
+</script>
 </body>
 </html>
+
