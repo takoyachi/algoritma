@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuis Algoritma - SMK Kelas X</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #56ccf2, #2f80ed);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2f80ed;
+    }
+
+    .question {
+      display: none;
+      animation: fade 0.4s ease-in-out;
+    }
+
+    .question.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      padding: 10px 15px;
+      margin: 8px 0;
+      background: #f3f9ff;
+      border: 1px solid #cde1f9;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    label:hover {
+      background: #e3f0ff;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .wrong-list {
+      color: red;
+      margin-top: 10px;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kuis Algoritma - Kelas X</h1>
+
+    <!-- Soal-soalnya -->
+    <div class="question active" data-question="1">
+      <p>1. Apa itu algoritma dalam pemrograman?</p>
+      <label><input type="radio" name="q1" value="a"> A. Bahasa pemrograman tertentu</label>
+      <label><input type="radio" name="q1" value="b"> B. Urutan langkah logis untuk menyelesaikan masalah</label>
+      <label><input type="radio" name="q1" value="c"> C. Sistem operasi</label>
+      <label><input type="radio" name="q1" value="d"> D. Database</label>
+    </div>
+
+    <div class="question" data-question="2">
+      <p>2. Struktur algoritma terdiri dari...</p>
+      <label><input type="radio" name="q2" value="a"> A. Input, Proses, Output</label>
+      <label><input type="radio" name="q2" value="b"> B. Hardware, Software, Brainware</label>
+      <label><input type="radio" name="q2" value="c"> C. HTML, CSS, JavaScript</label>
+      <label><input type="radio" name="q2" value="d"> D. Kondisi, Tipe data, Fungsi</label>
+    </div>
+
+    <div class="question" data-question="3">
+      <p>3. Simbol jajar genjang dalam flowchart digunakan untuk...</p>
+      <label><input type="radio" name="q3" value="a"> A. Proses</label>
+      <label><input type="radio" name="q3" value="b"> B. Output atau input</label>
+      <label><input type="radio" name="q3" value="c"> C. Keputusan</label>
+      <label><input type="radio" name="q3" value="d"> D. Terminator</label>
+    </div>
+
+    <div class="question" data-question="4">
+      <p>4. Fungsi dari simbol decision (belah ketupat) pada flowchart adalah...</p>
+      <label><input type="radio" name="q4" value="a"> A. Menyimpan data</label>
+      <label><input type="radio" name="q4" value="b"> B. Proses perhitungan</label>
+      <label><input type="radio" name="q4" value="c"> C. Keputusan bercabang</label>
+      <label><input type="radio" name="q4" value="d"> D. Menunjukkan arah alur</label>
+    </div>
+
+    <div class="question" data-question="5">
+      <p>5. Algoritma bisa ditulis dalam bentuk...</p>
+      <label><input type="radio" name="q5" value="a"> A. Pseudocode atau flowchart</label>
+      <label><input type="radio" name="q5" value="b"> B. Hanya menggunakan bahasa Inggris</label>
+      <label><input type="radio" name="q5" value="c"> C. Simbol musik</label>
+      <label><input type="radio" name="q5" value="d"> D. Program dalam Excel</label>
+    </div>
+
+    <div class="question" data-question="6">
+      <p>6. Tujuan utama dari membuat algoritma adalah...</p>
+      <label><input type="radio" name="q6" value="a"> A. Menyulitkan proses</label>
+      <label><input type="radio" name="q6" value="b"> B. Menyederhanakan dan menyusun solusi masalah</label>
+      <label><input type="radio" name="q6" value="c"> C. Menggambar simbol</label>
+      <label><input type="radio" name="q6" value="d"> D. Mengisi waktu kosong</label>
+    </div>
+
+    <div class="question" data-question="7">
+      <p>7. Pseudocode adalah...</p>
+      <label><input type="radio" name="q7" value="a"> A. Bahasa pemrograman resmi</label>
+      <label><input type="radio" name="q7" value="b"> B. Bahasa manusia biasa dalam bentuk logika program</label>
+      <label><input type="radio" name="q7" value="c"> C. Kode HTML</label>
+      <label><input type="radio" name="q7" value="d"> D. Desain grafis</label>
+    </div>
+
+    <div class="question" data-question="8">
+      <p>8. Algoritma bisa diaplikasikan di bidang berikut, kecuali...</p>
+      <label><input type="radio" name="q8" value="a"> A. Teknologi</label>
+      <label><input type="radio" name="q8" value="b"> B. Kedokteran</label>
+      <label><input type="radio" name="q8" value="c"> C. Matematika</label>
+      <label><input type="radio" name="q8" value="d"> D. Mencetak uang palsu</label>
+    </div>
+
+    <div class="question" data-question="9">
+      <p>9. Apa yang terjadi jika algoritma tidak tepat?</p>
+      <label><input type="radio" name="q9" value="a"> A. Program berjalan lancar</label>
+      <label><input type="radio" name="q9" value="b"> B. Program tidak berjalan sesuai harapan</label>
+      <label><input type="radio" name="q9" value="c"> C. Komputer menjadi lambat</label>
+      <label><input type="radio" name="q9" value="d"> D. Data otomatis hilang</label>
+    </div>
+
+    <div class="question" data-question="10">
+      <p>10. Urutan algoritma yang benar adalah...</p>
+      <label><input type="radio" name="q10" value="a"> A. Output → Proses → Input</label>
+      <label><input type="radio" name="q10" value="b"> B. Input → Output → Proses</label>
+      <label><input type="radio" name="q10" value="c"> C. Input → Proses → Output</label>
+      <label><input type="radio" name="q10" value="d"> D. Proses → Output → Input</label>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const answers = {
+      q1: 'b', q2: 'a', q3: 'b', q4: 'c', q5: 'a',
+      q6: 'b', q7: 'b', q8: 'd', q9: 'b', q10: 'c'
+    };
+    const userAnswers = {};
+    const wrong = [];
+    const questions = document.querySelectorAll('.question');
+
+    questions.forEach((q, index) => {
+      const inputs = q.querySelectorAll('input[type=radio]');
+      inputs.forEach(input => {
+        input.addEventListener('change', () => {
+          const name = input.name;
+          userAnswers[name] = input.value;
+          q.classList.remove('active');
+          if (index + 1 < questions.length) {
+            questions[index + 1].classList.add('active');
+          } else {
+            showResult();
+          }
+        });
+      });
+    });
+
+    function showResult() {
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const key = 'q' + i;
+        if (userAnswers[key] === answers[key]) {
+          score++;
+        } else {
+          wrong.push(i);
+        }
+      }
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `<p>Nilai Anda: ${score * 10} / 100</p>`;
+      if (wrong.length) {
+        resultDiv.innerHTML += `<p class="wrong-list">Soal yang salah: ${wrong.join(', ')}</p>`;
+      } else {
+        resultDiv.innerHTML += `<p>Semua jawaban benar! Hebat!</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
